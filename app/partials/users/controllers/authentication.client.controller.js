@@ -33,7 +33,6 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
     		function (data, status, headers, config) {
         //do something
         $scope.authentication.user = data;
-        console.log(data);
 
 				// And redirect to the index page
 				$location.path('/');
@@ -41,9 +40,6 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 			).error(
     		function (data, status, headers, config) {
         //do something
-        console.log(data);
-        // console.log(status);
-        // console.log(headers, config);
         $scope.error = data.message;
     	});
 		};
