@@ -40,16 +40,39 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 
 		// Update a user profile
 		$scope.updateUserProfile = function(isValid) {
+			console.log($.param($scope.user));
 			if (isValid) {
 				$scope.success = $scope.error = null;
-				var user = new Users($scope.user);
+	  		var options = {
+	  		  method: 'PUT',
+	  		  url: 'http://localhost:3000/users',
+	  		  data: $.param($scope.user),
+	  		  headers: {
+	      	 'Content-Type': 'application/x-www-form-urlencoded'
+	  		  }
+	  		};
+	  		$http(options).success(
+	  		  function (data, status, headers, config) {
+	          //do something
+	          $scope.success = true;
+	          Authentication.user = data;
+	  		  	// And redirect to the index page
+	  	   		$location.path('/');
+	    		}
+	  		).error(
+	  		  function (data, status, headers, config) {
+	        console.log(data);
+	        //do something
+	        $scope.error = data;
+	      });
+				// var user = new Users($scope.user);
 
-				user.$update(function(response) {
-					$scope.success = true;
-					Authentication.user = response;
-				}, function(response) {
-					$scope.error = response.data.message;
-				});
+				// user.$update(function(response) {
+				// 	$scope.success = true;
+				// 	Authentication.user = response;
+				// }, function(response) {
+				// 	$scope.error = response.data.message;
+				// });
 			} else {
 				$scope.submitted = true;
 			}

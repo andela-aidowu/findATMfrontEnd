@@ -30,29 +30,27 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
         $scope.error = data.message;
       });
 		};
-		$scope.signin = function() {
-			console.log($scope.credentials);
-			var options = {
-    		method: 'POST',
-    		url: 'http://localhost:3000/auth/signin',
-    		data: $.param($scope.credentials),
-    		headers: {
-        	'Content-Type': 'application/x-www-form-urlencoded'
+  	$scope.signin = function() {
+  		var options = {
+  		  method: 'POST',
+  		  url: 'http://localhost:3000/auth/signin',
+  		  data: $.param($scope.credentials),
+  		  headers: {
+      	 'Content-Type': 'application/x-www-form-urlencoded'
+  		  }
+  		};
+  		$http(options).success(
+  		  function (data, status, headers, config) {
+          //do something
+          $scope.authentication.user = data;
+  		  	// And redirect to the index page
+  	   		$location.path('/');
     		}
-			};
-			$http(options).success(
-    		function (data, status, headers, config) {
-        //do something
-        $scope.authentication.user = data;
-
-				// And redirect to the index page
-				$location.path('/');
-    		}
-			).error(
-    		function (data, status, headers, config) {
+  		).error(
+  		  function (data, status, headers, config) {
         //do something
         $scope.error = data.message;
-    	});
-		};
-	}
+      });
+  	};
+  }
 ]);
