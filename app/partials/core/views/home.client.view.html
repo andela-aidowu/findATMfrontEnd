@@ -9,13 +9,15 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-8">
 			<div class="row list-group">
-				<div ng-repeat="atm in atms" class="col-xs-12 list-group-item">
-					<p>Bank: {{atm.bank}}<span class="badge pull-right">{{atm.Distance}}</span></p>
-					<p>Address: {{atm.Address}}</p>
+				<ul>
+					<li ng-repeat="atm in atms" class="col-xs-12 list-group-item">
+						<p>Bank: {{atm.bank}}<span class="badge pull-right">{{atm.Distance}}</span></p>
+						<p>Address: {{atm.Address}}</p>
 
-					<p>State: {{atm.State}} </p>
-					<p>Estimate: {{atm.Estimate}} </p>
-				</div>
+						<p>State: {{atm.State}} </p>
+						<p>Estimate: {{atm.Estimate}} </p>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
