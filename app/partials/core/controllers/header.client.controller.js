@@ -27,7 +27,10 @@ angular.module('core').controller('HeaderController', ['$scope', 'appUrl', '$htt
         function (data, status, headers, config) {
           //do something
           // $scope.authentication.user = undefined;
-          Authentication.user = data;
+          // delete window.localStorage.user;
+          // delete window.localStorage.gdays-app-store;
+          window.localStorage.removeItem('user');
+          window.localStorage.removeItem('gdays-app-store');
           // And redirect to the index page
           $location.path('/');
         }
@@ -36,6 +39,10 @@ angular.module('core').controller('HeaderController', ['$scope', 'appUrl', '$htt
           //do something
           // console.log(status);
           // console.log(headers, config);
+          // delete window.localStorage.user;
+          // delete window.localStorage.gdays-app-store;
+          window.localStorage.removeItem('user');
+          window.localStorage.removeItem('gdays-app-store');
           $scope.error = data.message;
       });
     };

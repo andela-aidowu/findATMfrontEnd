@@ -22,7 +22,7 @@ angular.module('core').controller('HomeController', ['$scope','Atms', 'Authentic
     function showError(error) {
       switch(error.code) {
         case error.PERMISSION_DENIED:
-          $scope.errorMessage = "You denied the request for Geolocation.";
+          $scope.errorMessage = "You denied the request for Geolocation, please accept to get accurate nearby ATMs";
           break;
         case error.POSITION_UNAVAILABLE:
           $scope.errorMessage = "Location information is unavailable.";
@@ -34,7 +34,7 @@ angular.module('core').controller('HomeController', ['$scope','Atms', 'Authentic
           $scope.errorMessage = "An unknown error occurred.";
           break;
       }
-      $scope.apply();
+      $scope.$apply();
     }
     getLocation();
     function getAtms() {

@@ -5,9 +5,9 @@ angular.module('users').factory('Authentication', [
 	function() {
 		var _this = this;
     // console.log(this);
-
+    var retrievedUser = window.localStorage.getItem('user');
     _this._data = {
-      user: window.user
+      user: JSON.parse(retrievedUser)
     };
     // console.log(window);
 

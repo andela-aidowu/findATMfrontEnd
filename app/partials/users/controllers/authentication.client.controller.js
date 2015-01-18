@@ -20,13 +20,14 @@ angular.module('users').controller('AuthenticationController', ['$scope', 'appUr
         function (data, status, headers, config) {
         //do something
         $scope.authentication.user = data;
-        Authentication.user = data;
+        window.localStorage.setItem('user', JSON.stringify(data));
         // And redirect to the index page
         $location.path('/');
         }
       ).error(
         function (data, status, headers, config) {
         //do something
+        window.localStorage.removeItem('user');
         $scope.error = data.message;
       });
 		};
@@ -43,13 +44,14 @@ angular.module('users').controller('AuthenticationController', ['$scope', 'appUr
   		  function (data, status, headers, config) {
           //do something
           $scope.authentication.user = data;
-           Authentication.user = data;
+          window.localStorage.setItem('user', JSON.stringify(data));
   		  	// And redirect to the index page
   	   		$location.path('/');
     		}
   		).error(
   		  function (data, status, headers, config) {
         //do something
+        window.localStorage.removeItem('user');
         $scope.error = data.message;
       });
   	};
