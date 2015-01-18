@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', 'Authentication',
-	function($scope, $http, $location, Authentication) {
+angular.module('users').controller('AuthenticationController', ['$scope', 'appUrl', '$http', '$location', 'Authentication',
+	function($scope, appUrl, $http, $location, Authentication) {
 		$scope.authentication = Authentication;
 
 		// If user is signed in then redirect back home
@@ -10,7 +10,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 		$scope.signup = function() {
       var options = {
         method: 'POST',
-        url: 'http://localhost:3000/auth/signup',
+        url: appUrl.baseUrl + 'auth/signup',
         data: $.param($scope.credentials),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -20,7 +20,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
         function (data, status, headers, config) {
         //do something
         $scope.authentication.user = data;
-
+        Authentication.user = data;
         // And redirect to the index page
         $location.path('/');
         }
@@ -33,7 +33,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
   	$scope.signin = function() {
   		var options = {
   		  method: 'POST',
-  		  url: 'http://localhost:3000/auth/signin',
+  		  url: appUrl.baseUrl + 'auth/signin',
   		  data: $.param($scope.credentials),
   		  headers: {
       	 'Content-Type': 'application/x-www-form-urlencoded'
@@ -43,6 +43,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
   		  function (data, status, headers, config) {
           //do something
           $scope.authentication.user = data;
+           Authentication.user = data;
   		  	// And redirect to the index page
   	   		$location.path('/');
     		}

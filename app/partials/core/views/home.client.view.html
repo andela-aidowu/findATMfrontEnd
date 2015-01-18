@@ -10,7 +10,7 @@
 		<div class="col-xs-12 col-sm-8">
 			<div class="row list-group">
 				<ul>
-					<li ng-repeat="atm in atms" class="col-xs-12 list-group-item">
+					<li ng-repeat="atm in filteredAtms" class="col-xs-12 list-group-item">
 						<p>Bank: {{atm.bank_name.name}}<span class="badge pull-right">{{atm.distance | formatDistance}}</span></p>
 						<p>Address: {{atm.address}}</p>
 
@@ -19,6 +19,7 @@
 					</li>
 				</ul>
 			</div>
+			<pagination direction-links="false" boundary-links="true" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
 		</div>
 	</div>
 </section>

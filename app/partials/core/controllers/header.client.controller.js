@@ -25,18 +25,18 @@ angular.module('core').controller('HeaderController', ['$scope', 'appUrl', '$htt
       };
       $http(options).success(
         function (data, status, headers, config) {
-        //do something
-        // $scope.authentication.user = undefined;
-
-        // And redirect to the index page
-        $location.path('/');
+          //do something
+          // $scope.authentication.user = undefined;
+          Authentication.user = data;
+          // And redirect to the index page
+          $location.path('/');
         }
       ).error(
         function (data, status, headers, config) {
-        //do something
-        // console.log(status);
-        // console.log(headers, config);
-        $scope.error = data.message;
+          //do something
+          // console.log(status);
+          // console.log(headers, config);
+          $scope.error = data.message;
       });
     };
   }
