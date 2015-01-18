@@ -11,11 +11,11 @@
 			<div class="row list-group">
 				<ul>
 					<li ng-repeat="atm in atms" class="col-xs-12 list-group-item">
-						<p>Bank: {{atm.bank}}<span class="badge pull-right">{{atm.Distance}}</span></p>
-						<p>Address: {{atm.Address}}</p>
+						<p>Bank: {{atm.bank_name.name}}<span class="badge pull-right">{{atm.distance | formatDistance}}</span></p>
+						<p>Address: {{atm.address}}</p>
 
-						<p>State: {{atm.State}} </p>
-						<p>Estimate: {{atm.Estimate}} </p>
+						<p>State: {{atm.state.name}} </p>
+						<p>Estimate: {{atm.estimate}} </p>
 					</li>
 				</ul>
 			</div>

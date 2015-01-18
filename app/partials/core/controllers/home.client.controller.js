@@ -1,69 +1,13 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication',
-	function($scope, Authentication) {
+angular.module('core').controller('HomeController', ['$scope','Atms', 'Authentication', 
+	function($scope, Atms, Authentication) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
-    $scope.atms = atm;
+    $scope.atms = Atms.query({lng: '3.3850064', lat: '6.5073927'});
+    $scope.atms.$promise.then(function(data) {
+      $scope.atms = data;
+    });
 	}
 ]);
-
-var atm = [
-  {
-    "bank": "Access Bank",
-    "Address": "No 2, Funho Street, Sabo-Yaba Lagos",
-    "State": "Lagos State",
-    "Estimate": "true",
-    "Distance": "23km"
-  },
-  {
-    "bank": "Access Bank",
-    "Address": "No 2, Funho Street, Sabo-Yaba Lagos",
-    "State": "Lagos State",
-    "Estimate": "true",
-    "Distance": "23km"
-  },
-  {
-    "bank": "Access Bank",
-    "Address": "No 2, Funho Street, Sabo-Yaba Lagos",
-    "State": "Lagos State",
-    "Estimate": "true",
-    "Distance": "23km"
-  },
-  {
-    "bank": "Access Bank",
-    "Address": "No 2, Funho Street, Sabo-Yaba Lagos",
-    "State": "Lagos State",
-    "Estimate": "true",
-    "Distance": "23km"
-  },
-  {
-    "bank": "Access Bank",
-    "Address": "No 2, Funho Street, Sabo-Yaba Lagos",
-    "State": "Lagos State",
-    "Estimate": "true",
-    "Distance": "23km"
-  },
-  {
-    "bank": "Access Bank",
-    "Address": "No 2, Funho Street, Sabo-Yaba Lagos",
-    "State": "Lagos State",
-    "Estimate": "true",
-    "Distance": "23km"
-  },
-  {
-    "bank": "Access Bank",
-    "Address": "No 2, Funho Street, Sabo-Yaba Lagos",
-    "State": "Lagos State",
-    "Estimate": "true",
-    "Distance": "23km"
-  },
-  {
-    "bank": "Access Bank",
-    "Address": "No 2, Funho Street, Sabo-Yaba Lagos",
-    "State": "Lagos State",
-    "Estimate": "true",
-    "Distance": "23km"
-  },
-];
