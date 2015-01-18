@@ -10,8 +10,8 @@
 // 		});
 // 	}
 // ]);
-angular.module('users').factory('Users', ['$resource', function($resource) {
-  return $resource('http://localhost:3000/users', null,
+angular.module('users').factory('Users', ['$resource', 'appUrl', function($resource, appUrl) {
+  return $resource(appUrl.baseUrl + 'users', null,
     {
         'update': { method:'PUT' }
     },

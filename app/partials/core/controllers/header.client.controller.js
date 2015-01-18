@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$http', 'Authentication', 'Menus',
-  function($scope, $http, Authentication, Menus) {
+angular.module('core').controller('HeaderController', ['$scope', 'appUrl', '$http', 'Authentication', 'Menus',
+  function($scope, appUrl, $http, Authentication, Menus) {
     $scope.authentication = Authentication;
     $scope.isCollapsed = false;
     $scope.menu = Menus.getMenu('topbar');
@@ -15,10 +15,9 @@ angular.module('core').controller('HeaderController', ['$scope', '$http', 'Authe
       $scope.isCollapsed = false;
     });
     $scope.signout = function() {
-      console.log($scope.authentication.user);
       var options = {
         method: 'POST',
-        url: 'http://localhost:3000/auth/signout',
+        url: appUrl.baseUrl,
         data: $.param($scope.authentication.user),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -35,7 +34,6 @@ angular.module('core').controller('HeaderController', ['$scope', '$http', 'Authe
       ).error(
         function (data, status, headers, config) {
         //do something
-        console.log(data);
         // console.log(status);
         // console.log(headers, config);
         $scope.error = data.message;

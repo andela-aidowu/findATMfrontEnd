@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').factory('Atms', ['$resource', function($resource) {
-  var baseUrl = 'http://localhost:3000/api/v1/atms';
+angular.module('core').factory('Atms', ['$resource', 'appUrl', function($resource, appUrl) {
+  var baseUrl = appUrl.apiEndpoint;
   return $resource(baseUrl, null,
     {
         'update': { method:'PUT' },
