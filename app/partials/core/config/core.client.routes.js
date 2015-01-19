@@ -11,7 +11,7 @@ angular.module('core', []).config(['$stateProvider', '$urlRouterProvider',
 			templateUrl: 'app/partials/core/views/home.client.view.html'
 		}).
     state('add-atm', {
-      url: '/findATMfrontEnd/atm/add',
+      url: '/atm/add',
       templateUrl: 'app/partials/core/views/add-atm.client.view.html'
     });
 	}
