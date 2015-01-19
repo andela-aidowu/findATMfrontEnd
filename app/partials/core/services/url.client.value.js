@@ -1,4 +1,6 @@
+'use strict';
+
 angular.module('core').value('appUrl', {
-  baseUrl: 'http://localhost:3000/',
-  apiEndpoint: 'http://localhost:3000/api/v1/atms/'
+  baseUrl: 'https://find-atm.herokuapp.com/',
+  apiEndpoint: 'https://find-atm.herokuapp.com/api/v1/atms/'
 });

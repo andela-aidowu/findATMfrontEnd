@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication',
-	function($scope, $http, $location, Users, Authentication) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', 'appUrl', '$location', 'Users', 'Authentication',
+	function($scope, $http, appUrl, $location, Users, Authentication) {
 		$scope.user = Authentication.user;
 
 		// If user is not signed in then redirect back home
@@ -25,7 +25,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 		$scope.removeUserSocialAccount = function(provider) {
 			$scope.success = $scope.error = null;
 
-			$http.delete('/users/accounts', {
+			$http.delete(appUrl.baseUrl + '/users/accounts', {
 				params: {
 					provider: provider
 				}
@@ -40,13 +40,13 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 
 		// Update a user profile
 		$scope.updateUserProfile = function(isValid) {
-			console.log($.param($scope.user));
+			console.log($scope.user);
 			if (isValid) {
 				$scope.success = $scope.error = null;
 	  		var options = {
 	  		  method: 'PUT',
-	  		  url: 'http://localhost:3000/users',
-	  		  data: $.param($scope.user),
+	  		  url: appUrl.baseUrl + 'users',
+	  		  data: $scope.user,
 	  		  headers: {
 	      	 'Content-Type': 'application/x-www-form-urlencoded'
 	  		  }
@@ -82,7 +82,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 		$scope.changeUserPassword = function() {
 			$scope.success = $scope.error = null;
 
-			$http.post('/users/password', $scope.passwordDetails).success(function(response) {
+			$http.post(appUrl.baseUrl + '/users/password', $scope.passwordDetails).success(function(response) {
 				// If successful show success message and clear form
 				$scope.success = true;
 				$scope.passwordDetails = null;
