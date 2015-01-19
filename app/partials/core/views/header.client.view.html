@@ -6,21 +6,21 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a href="/#!" class="navbar-brand">findATM</a>
+		<a href="/findATMfrontEnd/#!" class="navbar-brand">findATM</a>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
 			
-			<li ui-route="/signup" ng-class="{active: $uiRoute}">
-				<a href="/#!/signup">Sign Up</a>
+			<li ui-route="/findATMfrontEnd/signup" ng-class="{active: $uiRoute}">
+				<a href="/findATMfrontEnd/#!/signup">Sign Up</a>
 			</li>
-			<li ui-route="/signin" ng-class="{active: $uiRoute}">
-				<a href="/#!/signin">Sign In</a>
+			<li ui-route="/findATMfrontEnd/signin" ng-class="{active: $uiRoute}">
+				<a href="/findATMfrontEnd/#!/signin">Sign In</a>
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-			<li ui-route="/atm/add" ng-class="{active: $uiRoute}">
-				<a href="/#!/atm/add">Add Atms</a>
+			<li ui-route="/findATMfrontEnd/atm/add" ng-class="{active: $uiRoute}">
+				<a href="/findATMfrontEnd/#!/atm/add">Add Atms</a>
 			</li>
 			<li class="dropdown">
 				<a href="#!" class="dropdown-toggle" data-toggle="dropdown">
@@ -28,13 +28,13 @@
 				</a>
 				<ul class="dropdown-menu">
 					<li>
-						<a href="/#!/settings/profile">Edit Profile</a>
+						<a href="/findATMfrontEnd/#!/settings/profile">Edit Profile</a>
 					</li>
 					<li>
-						<a href="/#!/settings/accounts">Manage Social Accounts</a>
+						<a href="/findATMfrontEnd/#!/settings/accounts">Manage Social Accounts</a>
 					</li>
 					<li data-ng-show="authentication.user.provider === 'local'">
-						<a href="/#!/settings/password">Change Password</a>
+						<a href="/findATMfrontEnd/#!/settings/password">Change Password</a>
 					</li>
 					<li>
 						<a href="#!" ng-click="signout()">Signout</a>
