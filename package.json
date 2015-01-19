@@ -5,12 +5,12 @@
   "description": "An angular ATM App which consumes an ATM API, provides user with the functionality of finding ATM, nearby",
   "repository": "https://github.com/andela-aidowu/findATMfrontEnd",
   "license": "MIT",
-  "scripts": {
-    "start": "node app.js"
-  },
   "engines": {
     "node": "0.10.x",
     "npm": "1.4.x"
+  },
+  "scripts": {
+    "start": "node app.js"
   },
   "dependencies": {
     "express": "~4.11.0"
