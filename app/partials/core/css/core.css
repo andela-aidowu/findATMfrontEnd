@@ -1,0 +1,53 @@
+.navbar{
+  background-color: #610027;
+  color: #fefefe;
+}
+.page-header h1, .page-header small {
+  color: #fff;
+}
+.list-group-item:nth-child(odd) {
+  background-color: #fff
+}
+.list-group-item:nth-child(even) {
+  color: #fff;
+}
+
+.page-header small {
+  font-family: 'Lobster', cursive;
+}
+.page-header h1 {
+  font-family: 'Signika', sans-serif;
+}
+body {
+  background-color: #A21A51;
+}
+/*#home {
+  background-color: #D45e8E
+}*/
+.list-group {
+  margin-left: 10px;
+}
+.list-group-item {
+  background-color: #D45E8E;
+  color: #610027;
+  font-weight: 700;
+}
+.navbar a {
+  color: #fefefe;
+}
+
+.content {
+  margin-top: 50px;
+}
+.undecorated-link:hover {
+  text-decoration: none;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+.ng-invalid.ng-dirty {
+  border-color: #FA787E;
+}
+.ng-valid.ng-dirty {
+  border-color: #78FA89;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="findatm" class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Find ATM</title>
+    <base href="/">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Lobster|Signika:600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="app/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="app/lib/bootstrap/dist/css/bootstrap-theme.css">
+    <!-- <link rel="stylesheet" href="app/lib/bootstrap/dist/css/bootstrap-select.css"> -->
+    <!-- <link rel="stylesheet" href="app/lib/bootstrap/dist/css/superhero.bootstrap.css"> -->
+    <!-- <link rel="stylesheet" href="app/lib/bootstrap/dist/css/amelia.bootstrap.css"> -->
+    <link rel="stylesheet" href="app/partials/core/css/core.css">
+    <link rel="stylesheet" href="app/partials/users/css/users.css">
+    <!-- <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css"> -->
+    <!-- <link rel="stylesheet" href="app.css"> -->
+    <!-- <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script> -->
+  </head>
+  <body ng-cloak class="ng-cloak">
+  <header data-ng-include="'app/partials/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse">
+    
+  </header>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <section class="content">
+      <section class="container">
+        <div data-ui-view></div>
+      </section>
+    </section>
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="app/lib/angular/angular.js"></script>
+    <script src="app/lib/angular-resource/angular-resource.js"></script>
+    <script src="app/lib/angular-cookies/angular-cookies.js"></script>
+    <script src="app/lib/angular-animate/angular-animate.js"></script>
+    <script src="app/lib/angular-touch/angular-touch.js"></script>
+    <script src="app/lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="app/lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="app/lib/angular-ui-utils/ui-utils.js"></script>
+    <script src="app/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="app/lib/ng-storage/ngStorage.js"></script>
+    <script src="app/partials/core/config/core.client.routes.js"></script>
+    <script src="app/partials/core/controllers/header.client.controller.js"></script>
+    <script src="app/partials/core/controllers/home.client.controller.js"></script>
+    <script src="app/partials/core/services/menus.client.service.js"></script>
+    <script src="app/partials/users/config/users.client.config.js"></script>
+    <script src="app/partials/users/config/users.client.routes.js"></script>
+    <script src="app/partials/users/controllers/authentication.client.controller.js"></script>
+    <script src="app/partials/users/controllers/password.client.controller.js"></script>
+    <script src="app/partials/users/controllers/settings.client.controller.js"></script>
+    <script src="app/partials/core/controllers/atms.client.controller.js"></script>
+    <script src="app/partials/users/services/authentication.client.service.js"></script>
+    <script src="app/partials/users/services/users.client.service.js"></script>
+    <script src="app/partials/core/services/atms.client.service.js"></script>
+    <script src="app/partials/core/services/atms.client.filter.js"></script>
+    <script src="app/partials/core/services/url.client.value.js"></script>
+    <script src="app/lib/jquery/dist/jquery.js"></script>
+    <script src="app/js/application.js"></script>
+    <!-- <script src="view2/view2.js"></script>
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script> -->
+  </body>
+</html>

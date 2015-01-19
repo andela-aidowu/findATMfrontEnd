@@ -1,0 +1,31 @@
+<section data-ng-controller="HomeController" id="home" class="container col-md-11">
+	<div class="page-header">
+		<div class="row">
+			<div class="col-lg-10">
+				<h1>findATM <small>never be stranded again! find the closest ATM to you</small></h1>
+			</div>
+		</div>
+	</div>
+	<div class="alert alert-warning" role="alert" ng-show="errorMessage">
+  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  	<p><strong>Warning! </strong><span ng-bind="errorMessage"></span></p>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-8">
+			<div class="row list-group">
+				<ul>
+					<li ng-repeat="atm in filteredAtms" class="col-xs-12 list-group-item">
+						<p>Bank: {{atm.bank_name.name}}<span class="badge pull-right">{{atm.distance | formatDistance}}</span></p>
+						<p>Address: {{atm.address}}</p>
+
+						<p>State: {{atm.state.name}} </p>
+						<p>Estimate: {{atm.estimate}} </p>
+					</li>
+				</ul>
+			</div>
+			<div ng-show="filteredAtms">
+				<pagination direction-links="false" boundary-links="true" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+			</div>
+		</div>
+	</div>
+</section>
