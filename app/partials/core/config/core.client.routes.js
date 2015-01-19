@@ -9,6 +9,10 @@ angular.module('core', []).config(['$stateProvider', '$urlRouterProvider',
 		state('home', {
 			url: '/',
 			templateUrl: 'app/partials/core/views/home.client.view.html'
-		});
+		}).
+    state('add-atm', {
+      url: '/atm/add',
+      templateUrl: 'app/partials/core/views/add-atm.client.view.html'
+    });
 	}
 ]);

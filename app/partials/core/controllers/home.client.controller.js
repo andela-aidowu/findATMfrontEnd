@@ -38,7 +38,7 @@ angular.module('core').controller('HomeController', ['$scope','Atms', 'Authentic
     }
     getLocation();
     function getAtms() {
-      $scope.atms = Atms.query({lng: Userlng, lat: Userlat});
+      $scope.atms = Atms.all.query({lng: Userlng, lat: Userlat});
       $scope.atms.$promise.then(function(data) {
         $scope.atms = data;
         $scope.totalItems = data.length;
