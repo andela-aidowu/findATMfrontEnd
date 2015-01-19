@@ -7,7 +7,7 @@ angular.module('core', []).config(['$stateProvider', '$urlRouterProvider',
 		// Home state routing
 		$stateProvider.
 		state('home', {
-			url: '/findATMfrontEnd/',
+			url: '/',
 			templateUrl: 'app/partials/core/views/home.client.view.html'
 		}).
     state('add-atm', {
