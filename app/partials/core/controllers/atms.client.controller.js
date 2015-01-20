@@ -17,8 +17,9 @@ angular.module('core').controller('atmsController', ['$scope', 'Atms', '$locatio
   $scope.addAtm = function() {
     Atms.all.save({token: $scope.authentication.user.token}, $scope.atm, function(atm) {
       $scope.atm = {};
-      $
+    }, function(error) {
+      $scope.errorMessage = error.statusText;
+      console.log(error);
     });
-    console.log($scope.atm);
   };
 }]);
