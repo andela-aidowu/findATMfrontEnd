@@ -18,8 +18,7 @@ angular.module('core').controller('atmsController', ['$scope', 'Atms', '$locatio
     Atms.all.save({token: $scope.authentication.user.token}, $scope.atm, function(atm) {
       $scope.atm = {};
     }, function(error) {
-      $scope.errorMessage = error.statusText;
-      console.log(error);
+      $scope.errorMessage = "ATM Point could not be save, Please review your input and try again";
     });
   };
 }]);
