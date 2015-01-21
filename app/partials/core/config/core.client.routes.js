@@ -13,6 +13,10 @@ angular.module('core', []).config(['$stateProvider', '$urlRouterProvider',
     state('add-atm', {
       url: '/atm/add',
       templateUrl: 'app/partials/core/views/add-atm.client.view.html'
+    }).
+    state('edit-atm', {
+      url: '/atm/edit/:id',
+      templateUrl: 'app/partials/core/views/edit-atm.client.view.html'
     });
 	}
 ]);

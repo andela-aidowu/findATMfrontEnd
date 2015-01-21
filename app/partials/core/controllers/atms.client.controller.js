@@ -13,12 +13,39 @@ angular.module('core').controller('atmsController', ['$scope', 'Atms', '$locatio
   $scope.banks = Atms.banks.get({});
   $scope.banks.$promise.then(function(data) {
     $scope.banks = data;
+    // $scope.atm.bank = $scope.banks[4]._id;
   });
   $scope.addAtm = function() {
     Atms.all.save({token: $scope.authentication.user.token}, $scope.atm, function(atm) {
       $scope.atm = {};
     }, function(error) {
       $scope.errorMessage = "ATM Point could not be save, Please review your input and try again";
+    });
+  };
+}]);
+
+angular.module('core').controller('editAtmController', ['$scope','Atms', 'Authentication', '$stateParams', function($scope, Atms, Authentication, $stateParams) {
+  Atms.one.get({id: $stateParams.id}, function(states) {
+    $scope.atm = states;
+    getData();
+  });
+  function getData () {
+    $scope.states = Atms.states.get({});
+    $scope.states.$promise.then(function(data) {
+      $scope.states = data;
+      $scope.atm.state = $scope.atm.state._id;
+    });
+    $scope.banks = Atms.banks.get({});
+    $scope.banks.$promise.then(function(data) {
+      $scope.banks = data;
+      $scope.atm.bank_name = $scope.atm.bank_name._id;
+    });
+  }
+  $scope.editAtm = function () {
+    Atms.one.updae({id: $scope.atm._id}, $scope.atm, function(atm) {
+      $scope.message = 'Atm point updated succesfully';
+    }, function(err) {
+      $scope.message = 'Error occured, Atm was not saved';
     });
   };
 }]);

@@ -4,7 +4,6 @@ angular.module('core').factory('Atms', ['$resource', 'appUrl', function($resourc
   var baseUrl = appUrl.apiEndpoint;
   return {
     all: $resource(baseUrl, null, {
-        'update': { method:'PUT' },
         'query': {method: 'GET', url: baseUrl, isArray: true}
     }),
     states: $resource(baseUrl + 'states', null, {
@@ -12,6 +11,9 @@ angular.module('core').factory('Atms', ['$resource', 'appUrl', function($resourc
     }),
     banks: $resource(baseUrl + 'banks', null, {
       'get': {method: 'GET', isArray: true}
+    }),
+    one: $resource(baseUrl + ':id', null, {
+      'updae': {method: 'PUT'},
     })
   };
 }]);
