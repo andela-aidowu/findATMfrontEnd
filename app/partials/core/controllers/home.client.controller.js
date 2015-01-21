@@ -11,7 +11,8 @@ angular.module('core').controller('HomeController', ['$scope','Atms', 'Authentic
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
       } else { 
-        $scope.errorMessage = "Geolocation is not supported by this browser.";
+        $scope.messageTitle = 'Error!';
+        $scope.message = "Geolocation is not supported by this browser.";
       }
     }
     function showPosition(position) {
@@ -22,15 +23,19 @@ angular.module('core').controller('HomeController', ['$scope','Atms', 'Authentic
     function showError(error) {
       switch(error.code) {
         case error.PERMISSION_DENIED:
+          $scope.messageTitle = 'Error!';
           $scope.errorMessage = "You denied the request for Geolocation, please accept to get accurate nearby ATMs";
           break;
         case error.POSITION_UNAVAILABLE:
+          $scope.messageTitle = 'Error!';
           $scope.errorMessage = "Location information is unavailable.";
           break;
         case error.TIMEOUT:
+          $scope.messageTitle = 'Error!';
           $scope.errorMessage = "The request to get your location timed out.";
           break;
         case error.UNKNOWN_ERROR:
+          $scope.messageTitle = 'Error!';
           $scope.errorMessage = "An unknown error occurred.";
           break;
       }
