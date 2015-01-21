@@ -6,6 +6,7 @@ angular.module('core').controller('HomeController', ['$scope','Atms', 'Authentic
     var Userlng, Userlat;
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
+    console.log($scope.authentication);
     $scope.errorMessage = "";
     function getLocation() {
       if (navigator.geolocation) {
@@ -46,6 +47,7 @@ angular.module('core').controller('HomeController', ['$scope','Atms', 'Authentic
       $scope.atms = Atms.all.query({lng: Userlng, lat: Userlat});
       $scope.atms.$promise.then(function(data) {
         $scope.atms = data;
+        console.log($scope.atms);
         $scope.totalItems = data.length;
         $scope.itemsPerPage = 10;
         $scope.currentPage = 1;
