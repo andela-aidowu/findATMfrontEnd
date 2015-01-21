@@ -8,7 +8,7 @@
   </div>
   <div class="alert alert-warning alert-dismissible" role="alert" ng-show="message">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <p><strong ng-bind="messageTitle">Warning! </strong><span ng-bind="message"></span></p>
+    <p><strong ng-bind="messageTitle"><span>&nbsp;&nbsp;</span></strong><span ng-bind="message"></span></p>
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-8">
@@ -19,7 +19,7 @@
             <p>Address: {{atm.address}}</p>
 
             <p>State: {{atm.state.name}} </p>
-            <p>Estimate: {{atm.estimate}} <span class="badge pull-right">Delete</span><span data-ng-if="authentication.user.username == atm.user || authentication.user.username == 'admin'" class="badge pull-right"><a href="/#!/atm/edit/{{atm._id}}">Edit</a></span></p>
+            <p>Estimate: {{atm.estimate}} <span data-ng-if="authentication.user.username == 'admin'" class="badge pull-right"><a href ng-click="deleteAtm(atm._id)">Delete</a></span><span data-ng-if="authentication.user.username == atm.user || authentication.user.username == 'admin'" class="badge pull-right"><a href="/#!/atm/edit/{{atm._id}}">Edit</a></span></p>
           </li>
         </ul>
       </div>

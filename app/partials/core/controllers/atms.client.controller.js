@@ -18,6 +18,8 @@ angular.module('core').controller('atmsController', ['$scope', 'Atms', '$locatio
   $scope.addAtm = function() {
     Atms.all.save({token: $scope.authentication.user.token}, $scope.atm, function(atm) {
       $scope.atm = {};
+      $scope.messageTitle = 'Success!';
+      $scope.message = 'Atm point added succesfully';
     }, function(error) {
       $scope.messageTitle = 'Error!';
       $scope.message = "ATM Point could not be save, Please review your input and try again";
@@ -43,7 +45,7 @@ angular.module('core').controller('editAtmController', ['$scope','Atms', 'Authen
     });
   }
   $scope.editAtm = function () {
-    Atms.one.updae({id: $scope.atm._id}, $scope.atm, function(atm) {
+    Atms.one.update({id: $scope.atm._id}, $scope.atm, function(atm) {
       $scope.messageTitle = 'Success!';
       $scope.message = 'Atm point updated succesfully';
     }, function(err) {

@@ -13,7 +13,7 @@ angular.module('core').factory('Atms', ['$resource', 'appUrl', function($resourc
       'get': {method: 'GET', isArray: true}
     }),
     one: $resource(baseUrl + ':id', null, {
-      'updae': {method: 'PUT'},
+      'update': {method: 'PUT'},
     })
   };
 }]);
