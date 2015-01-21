@@ -16,6 +16,11 @@ angular.module('core').controller('atmsController', ['$scope', 'Atms', '$locatio
     // $scope.atm.bank = $scope.banks[4]._id;
   });
   $scope.addAtm = function() {
+    if (!$scope.authentication.user) {
+      $scope.messageTitle = 'Error! 403!';
+        $scope.message = 'You can not create an ATM, please create an account or login';
+        return;
+    }
     Atms.all.save({token: $scope.authentication.user.token}, $scope.atm, function(atm) {
       $scope.atm = {};
       $scope.messageTitle = 'Success!';
@@ -45,6 +50,11 @@ angular.module('core').controller('editAtmController', ['$scope','Atms', 'Authen
     });
   }
   $scope.editAtm = function () {
+    if ($scope.atm.user !== $scope.authentication.user.username || $scope.authentication.user.username !== 'admin') {
+      $scope.messageTitle = 'Error! 403!';
+        $scope.message = 'You can not allowed to edit this ATM';
+        return;
+    }
     Atms.one.update({id: $scope.atm._id}, $scope.atm, function(atm) {
       $scope.messageTitle = 'Success!';
       $scope.message = 'Atm point updated succesfully';

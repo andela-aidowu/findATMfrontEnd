@@ -64,7 +64,10 @@ angular.module('core').controller('HomeController', ['$scope','Atms', 'Authentic
       });
     }
     $scope.deleteAtm = function(atmid) {
-      console.log('deleting', atmid);
+      if ($scope.authentication.user.username !== 'admin') {
+        $scope.messageTitle = 'Error! 403!';
+        $scope.message = 'You can not allowed to delete an ATM';
+      }
       Atms.one.delete({id: atmid}, function(atm) {
         $scope.messageTitle = 'Success!';
         $scope.message = 'Atm point deleted succesfully';
