@@ -7,6 +7,26 @@ angular.module('core').controller('HomeController', ['$scope','Atms', 'Authentic
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
     $scope.errorMessage = "";
+
+    function sortAtmsByPages(data) {
+      $scope.atms = data;
+      $scope.totalItems = data.length;
+      $scope.itemsPerPage = 10;
+      $scope.currentPage = 1;
+      $scope.figureOutAtmsToDisplay = function() {
+        var begin = (($scope.currentPage - 1) * $scope.itemsPerPage);
+        var end = begin + $scope.itemsPerPage;
+        $scope.filteredAtms = $scope.atms.slice(begin, end);
+      };
+      $scope.figureOutAtmsToDisplay();
+      $scope.setPage = function (pageNo) {
+        $scope.currentPage = pageNo;
+      };
+      $scope.pageChanged = function() {
+        $scope.figureOutAtmsToDisplay();
+      };
+    }
+
     function getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -45,28 +65,14 @@ angular.module('core').controller('HomeController', ['$scope','Atms', 'Authentic
     function getAtms() {
       $scope.atms = Atms.all.query({lng: Userlng, lat: Userlat});
       $scope.atms.$promise.then(function(data) {
-        $scope.atms = data;
-        $scope.totalItems = data.length;
-        $scope.itemsPerPage = 10;
-        $scope.currentPage = 1;
-        $scope.figureOutAtmsToDisplay = function() {
-          var begin = (($scope.currentPage - 1) * $scope.itemsPerPage);
-          var end = begin + $scope.itemsPerPage;
-          $scope.filteredAtms = $scope.atms.slice(begin, end);
-        };
-        $scope.figureOutAtmsToDisplay();
-        $scope.setPage = function (pageNo) {
-          $scope.currentPage = pageNo;
-        };
-        $scope.pageChanged = function() {
-          $scope.figureOutAtmsToDisplay();
-        };
+        sortAtmsByPages(data);
       });
     }
     $scope.deleteAtm = function(atmid) {
       if ($scope.authentication.user.username !== 'admin') {
         $scope.messageTitle = 'Error! 403!';
-        $scope.message = 'You can not allowed to delete an ATM';
+        $scope.message = 'You can not allowed to delete this ATM';
+        return;
       }
       Atms.one.delete({id: atmid}, function(atm) {
         $scope.messageTitle = 'Success!';
@@ -75,6 +81,13 @@ angular.module('core').controller('HomeController', ['$scope','Atms', 'Authentic
         $scope.messageTitle = 'Error!';
         $scope.message = 'Error occured, Atm was not deleted';
       });
+    };
+    $scope.userAtms = function(userid) {
+      $scope.atms = Atms.all.query({lng: Userlng, lat: Userlat, userid: userid});
+      $scope.atms.$promise.then(function(data) {
+        sortAtmsByPages(data);
+      });
+      $scope.$apply();
     };
 	}
 ]);
